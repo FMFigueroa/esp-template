@@ -1,0 +1,14 @@
+[package]
+name = "{{ crate_name }}"
+version = "0.1.0"
+authors = ["{{ authors }}"]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+hal = { package = "{{ mcu }}-hal", version = "{{ hal_version }}" }
+esp-backtrace = { version = "0.5.0", features = ["{{ mcu }}", "panic-handler", "print-uart"] }
+esp-println       = { version = "0.3.1", features = ["{{ mcu }}"] }
+{% if alloc -%}
+esp-alloc = { version = "0.2.0", features = ["oom-handler"] }
+{% endif -%}
